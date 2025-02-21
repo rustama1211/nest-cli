@@ -130,12 +130,10 @@ const generateFiles = async (inputs: Input[]) => {
 
   if (shouldAskForModule(schematic)) {
     const moduleList = getModuleFolderByProjectName(sourceRoot);
-    console.log(moduleList)
     const selectedModuleName = (await askForModuleName(
       MESSAGES.MODULE_SELECTION_QUESTION,
       moduleList,
     )) as string;
-    console.log(selectedModuleName)
     schematicOptions.push(new SchematicOption('moduleName',  selectedModuleName));
   }
 
