@@ -30,11 +30,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nestjs/nest-cli.git"
+    "url": "git+https://github.com/rustama1211/nest-cli.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nestjs/nest-cli/issues"
+    "url": "git+https://github.com/rustama1211/nest-cli/issues"
   },
   "homepage": "https://github.com/nestjs/nest-cli#readme",
   "dependencies": {
