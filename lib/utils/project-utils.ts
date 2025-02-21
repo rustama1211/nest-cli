@@ -4,6 +4,7 @@ import { getValueOrDefault } from '../compiler/helpers/get-value-or-default';
 import { Configuration, ProjectConfiguration } from '../configuration';
 import { generateSelect } from '../questions/questions';
 import { gracefullyExitOnPromptError } from './gracefully-exit-on-prompt-error';
+import { FileSystemReader } from '../readers';
 
 export function shouldAskForProject(
   schematic: string,
@@ -15,6 +16,19 @@ export function shouldAskForProject(
     configurationProjects &&
     Object.entries(configurationProjects).length !== 0 &&
     !appName
+  );
+}
+
+export function getModuleFolderByProjectName(sourceRoot: string): Array<string> {
+  const systemReader = new FileSystemReader(sourceRoot);
+  return systemReader.list();
+}
+
+export function shouldAskForModule(
+  schematic: string,
+) {
+  return (
+    ['kmm', 'ksm'].includes(schematic) === true
   );
 }
 
@@ -119,6 +133,14 @@ export async function askForProjectName(
 ) {
   const projectNameSelect = generateSelect('appName')(promptQuestion)(projects);
   return select(projectNameSelect).catch(gracefullyExitOnPromptError);
+}
+
+export async function askForModuleName(
+  promptQuestion: string,
+  modules: string[],
+) {
+  const moduleNameSelect = generateSelect('moduleName')(promptQuestion)(modules);
+  return select(moduleNameSelect).catch(gracefullyExitOnPromptError);
 }
 
 export function moveDefaultProjectToStart(

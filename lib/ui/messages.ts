@@ -4,6 +4,7 @@ import { EMOJIS } from './emojis';
 export const MESSAGES = {
   PROJECT_NAME_QUESTION: 'What name would you like to use for the new project?',
   PROJECT_SELECTION_QUESTION: 'Which project would you like to generate to?',
+  MODULE_SELECTION_QUESTION: 'Which module would you like to generate to?',
   LIBRARY_PROJECT_SELECTION_QUESTION:
     'Which project would you like to add the library to?',
   DRY_RUN_MODE: 'Command has been executed in dry run mode, nothing changed!',
