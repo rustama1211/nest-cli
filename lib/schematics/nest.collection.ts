@@ -81,6 +81,16 @@ export class NestCollection extends AbstractCollection {
       description: 'Generate a module declaration',
     },
     {
+      name: 'knex-migrate-make',
+      alias: 'kmm',
+      description: 'Generate a module declaration',
+    },
+    {
+      name: 'knex-seed-make',
+      alias: 'ksm',
+      description: 'Generate a module declaration',
+    },
+    {
       name: 'pipe',
       alias: 'pi',
       description: 'Generate a pipe declaration',

@@ -5,7 +5,8 @@ import { Configuration, ProjectConfiguration } from '../configuration';
 import { generateSelect } from '../questions/questions';
 import { gracefullyExitOnPromptError } from './gracefully-exit-on-prompt-error';
 import { FileSystemReader } from '../readers';
-
+import { globSync } from 'glob';
+import { basename, join } from 'path';
 export function shouldAskForProject(
   schematic: string,
   configurationProjects: { [key: string]: ProjectConfiguration },
@@ -20,8 +21,12 @@ export function shouldAskForProject(
 }
 
 export function getModuleFolderByProjectName(sourceRoot: string): Array<string> {
-  const systemReader = new FileSystemReader(sourceRoot);
-  return systemReader.list();
+  
+    const listFolderName = globSync(join(sourceRoot, '/*/'));
+    const list = listFolderName.map((item: string) => {
+        return basename(item);
+    });
+    return list;
 }
 
 export function shouldAskForModule(
