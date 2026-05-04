@@ -13,7 +13,7 @@ export class AbstractRunner {
     collect = false,
     cwd: string = process.cwd(),
   ): Promise<null | string> {
-    const args: string[] = [command];
+    const args: string[] = command.split(' ').filter(Boolean);
     const options: SpawnOptions = {
       cwd,
       stdio: collect ? 'pipe' : 'inherit',
